@@ -10,16 +10,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
-public class RetrieveController {
-    private final ProductStockRepository repository;
+public class RetrieveAllController {
+    private final StockPersistenceService stockService;
 
-    public RetrieveController(ProductStockRepository repository) {
-        this.repository = repository;
+    public RetrieveAllController(StockPersistenceService stockService) {
+        this.stockService = stockService;
     }
 
     @RequestMapping
     public List<ProductStock> findAll() {
-        StockPersistenceService stockService = new StockPersistenceService(repository);
         return stockService.findAll();
     }
 }
